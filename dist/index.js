@@ -23,6 +23,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const electron_1 = require("electron");
+const electron_updater_1 = require("electron-updater");
 const path = __importStar(require("path"));
 const Connection = __importStar(require("./connection"));
 const node_adodb_1 = __importDefault(require("node-adodb"));
@@ -47,6 +48,7 @@ electron_1.app.on('ready', () => {
     console.log('App is ready', Date());
     electron_1.app.name = 'Access C3';
     createWindow();
+    electron_updater_1.autoUpdater.checkForUpdatesAndNotify();
 });
 electron_1.app.on('window-all-closed', () => {
     if (process.platform !== 'darwin') {

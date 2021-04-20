@@ -4,6 +4,7 @@ npm init
 npm i -D electron@latest
 npm install typescript --save-dev
 npm install electron-builder --save-dev
+npm i electron-updater 
 npm i node-adodb
 
 
@@ -20,6 +21,7 @@ npm i node-adodb
 - https://www.typescriptlang.org/download
 - https://www.npmjs.com/package/node-adodb
 - https://davembush.medium.com/typescript-and-electron-the-right-way-141c2e15e4e1
+- https://github.com/iffy/electron-updater-example
 
 ### Per Typescript
 

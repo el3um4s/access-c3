@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron';
+import { autoUpdater } from "electron-updater"
 import * as path from 'path';
 import * as Connection from './connection';
 
@@ -27,6 +28,7 @@ app.on('ready', () => {
     console.log('App is ready', Date());
     app.name = 'Access C3';
     createWindow();
+    autoUpdater.checkForUpdatesAndNotify();
 });
 
 app.on('window-all-closed', () => {
