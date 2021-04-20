@@ -10,8 +10,6 @@ ipcRenderer.on('list-tables', async (event, arg) => {
 	g_runtime.callFunction("ListTables_Clear");
 	g_runtime.callFunction("ListTables_Filter_Clear");
 	
-	
-	
 	ElectronStorage.listTables.forEach(table => {
 		g_runtime.callFunction("ListTables_Add", table.TABLE_NAME);
 		ElectronStorage.listTablesType.add(table.TABLE_TYPE);

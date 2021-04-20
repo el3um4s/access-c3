@@ -1,7 +1,9 @@
 {
   "name": "access-c3",
   "productName": "Access C3",
-  "version": "0.0.1",
+  "repository": "github:el3um4s/access-c3",
+  "homepage": "https://github.com/el3um4s/access-c3#access-c3",
+  "version": "0.0.2",
   "description": "Read MS Access files",
   "main": "dist/index.js",
   "scripts": {
@@ -19,7 +21,7 @@
     "Access 2000",
     "Access2k"
   ],
-  "author": "Samuele de Tomasi",
+  "author": "Samuele de Tomasi <samuele@stranianelli.com>",
   "license": "MIT",
   "devDependencies": {
     "electron": "^12.0.4",
