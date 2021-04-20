@@ -1,0 +1,385 @@
+{
+	"name": "Main",
+	"events": [
+		{
+			"eventType": "group",
+			"disabled": false,
+			"title": "LIST TABLES",
+			"description": "",
+			"isActiveOnStart": true,
+			"children": [
+				{
+					"eventType": "group",
+					"disabled": false,
+					"title": "LIST TABLES :: Functions",
+					"description": "",
+					"isActiveOnStart": true,
+					"children": [
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-created",
+									"objectClass": "FileChooser",
+									"sid": 402804114257777
+								}
+							],
+							"actions": [
+								{
+									"id": "wait",
+									"objectClass": "System",
+									"sid": 261766911104881,
+									"parameters": {
+										"seconds": "1/10"
+									}
+								},
+								{
+									"id": "wait-for-previous-actions",
+									"objectClass": "System",
+									"sid": 567504242777248
+								},
+								{
+									"type": "script",
+									"script": "ElectronRenderer.buttonChooseDatabase_EventListener();"
+								}
+							],
+							"sid": 125685101258523
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-selection-changed",
+									"objectClass": "ListTables_Filter_TABLE_TYPE",
+									"sid": 739615617229052
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layer-visible",
+									"objectClass": "System",
+									"sid": 869940716523266,
+									"parameters": {
+										"layer": "\"InfoColumn\"",
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 589340348869515,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "filter",
+									"type": "string",
+									"initialValue": "",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 749440455843810
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 542086205004182,
+											"parameters": {
+												"variable": "filter",
+												"value": "ListTables_Filter_TABLE_TYPE.SelectedText"
+											}
+										},
+										{
+											"type": "script",
+											"script": "const filter = localVars.filter;\nListTables.showListTable_FilterByType(filter);"
+										}
+									],
+									"sid": 307923402432568
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-selection-changed",
+									"objectClass": "ListTables",
+									"sid": 950474052934849
+								}
+							],
+							"actions": [
+								{
+									"id": "set-layer-visible",
+									"objectClass": "System",
+									"sid": 225577402852306,
+									"parameters": {
+										"layer": "\"InfoColumn\"",
+										"visibility": "invisible"
+									}
+								}
+							],
+							"sid": 247440696142390,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "tableName",
+									"type": "string",
+									"initialValue": "",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 446527844484210
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 204124058260025,
+											"parameters": {
+												"variable": "tableName",
+												"value": "ListTables.SelectedText"
+											}
+										},
+										{
+											"type": "script",
+											"script": "const tableName = localVars.tableName;\nElectronRenderer.showSchemaTable(tableName);"
+										}
+									],
+									"sid": 758072658154344
+								}
+							]
+						},
+						{
+							"eventType": "block",
+							"conditions": [
+								{
+									"id": "on-clicked",
+									"objectClass": "ListTables_Columns",
+									"sid": 625368905119933
+								},
+								{
+									"id": "on-selection-changed",
+									"objectClass": "ListTables_Columns",
+									"sid": 168210628026831
+								}
+							],
+							"actions": [],
+							"sid": 403381121235908,
+							"children": [
+								{
+									"eventType": "variable",
+									"name": "columnName",
+									"type": "string",
+									"initialValue": "",
+									"comment": "",
+									"isStatic": false,
+									"isConstant": false,
+									"sid": 697084471093840
+								},
+								{
+									"eventType": "block",
+									"conditions": [],
+									"actions": [
+										{
+											"id": "set-eventvar-value",
+											"objectClass": "System",
+											"sid": 734820813726632,
+											"parameters": {
+												"variable": "columnName",
+												"value": "ListTables_Columns.SelectedText"
+											}
+										},
+										{
+											"id": "set-layer-visible",
+											"objectClass": "System",
+											"sid": 723424310464256,
+											"parameters": {
+												"layer": "\"InfoColumn\"",
+												"visibility": "visible"
+											}
+										},
+										{
+											"type": "script",
+											"script": "const columnName = localVars.columnName;\nconst listColumns = ElectronStorage.listColumns;\nconst column = listColumns.filter( col => col.COLUMN_NAME == columnName);\nconst columnInfo = column[0];\n\nconst txtData = runtime.objects.txtData.getAllInstances();\ntxtData.forEach(txt => {\n  \tconst dataName = txt.instVars.dataName;\n  \ttxt.text = `${columnInfo[dataName]}`;\n})"
+										}
+									],
+									"sid": 657637918402972
+								}
+							],
+							"isOrBlock": true
+						}
+					],
+					"sid": 223975188747712
+				},
+				{
+					"functionName": "ListTables_Add",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "Table",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 371476128878324
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "add-item",
+							"objectClass": "ListTables",
+							"sid": 127906614287640,
+							"parameters": {
+								"text": "Table"
+							}
+						}
+					],
+					"sid": 958955031323021
+				},
+				{
+					"functionName": "ListTables_Clear",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "clear",
+							"objectClass": "ListTables",
+							"sid": 564679046645324
+						}
+					],
+					"sid": 373140605961279
+				},
+				{
+					"functionName": "ListTables_Filter_Clear",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "clear",
+							"objectClass": "ListTables_Filter_TABLE_TYPE",
+							"sid": 104674418683352
+						}
+					],
+					"sid": 818215742303395
+				},
+				{
+					"functionName": "ListTables_Filter_Add",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "Type",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 279304688762305
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "add-item",
+							"objectClass": "ListTables_Filter_TABLE_TYPE",
+							"sid": 491362487417461,
+							"parameters": {
+								"text": "Type"
+							}
+						}
+					],
+					"sid": 474416206783933
+				},
+				{
+					"functionName": "ListeTables_Filter_SetToALL",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "set-selection",
+							"objectClass": "ListTables_Filter_TABLE_TYPE",
+							"sid": 167708056394843,
+							"parameters": {
+								"index": "0"
+							}
+						}
+					],
+					"sid": 478607720953721
+				},
+				{
+					"functionName": "ListTables_Columns_Clear",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "clear",
+							"objectClass": "ListTables_Columns",
+							"sid": 835738525248982
+						}
+					],
+					"sid": 891407341108989
+				},
+				{
+					"functionName": "ListTables_Columns_Add",
+					"functionDescription": "",
+					"functionCategory": "",
+					"functionReturnType": "none",
+					"functionIsAsync": false,
+					"functionParameters": [
+						{
+							"name": "Column",
+							"type": "string",
+							"initialValue": "",
+							"comment": "",
+							"sid": 650323213881433
+						}
+					],
+					"eventType": "function-block",
+					"conditions": [],
+					"actions": [
+						{
+							"id": "add-item",
+							"objectClass": "ListTables_Columns",
+							"sid": 278910180146846,
+							"parameters": {
+								"text": "Column"
+							}
+						}
+					],
+					"sid": 646022046461598
+				}
+			],
+			"sid": 433297374271428
+		}
+	],
+	"sid": 147899603017765
+}

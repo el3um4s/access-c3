@@ -1,0 +1,16 @@
+{
+	"name": "txtData",
+	"plugin-id": "Text",
+	"sid": 672138403197366,
+	"isGlobal": false,
+	"instanceVariables": [
+		{
+			"name": "dataName",
+			"type": "string",
+			"desc": "",
+			"sid": 917911840842058
+		}
+	],
+	"behaviorTypes": [],
+	"effectTypes": []
+}

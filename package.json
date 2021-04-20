@@ -1,0 +1,56 @@
+{
+  "name": "access-c3",
+  "productName": "Access C3",
+  "version": "0.0.1",
+  "description": "Read MS Access files",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "npm run compile && electron .",
+    "compile": "tsc",
+    "build-installer": "electron-builder",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "MSaccess",
+    "database",
+    "Construct 3",
+    "MDB",
+    "Access 2000",
+    "Access2k"
+  ],
+  "author": "Samuele de Tomasi",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^12.0.4",
+    "electron-builder": "^22.10.5",
+    "typescript": "^4.2.4"
+  },
+  "dependencies": {
+    "node-adodb": "^5.0.3"
+  },
+  "build": {
+    "appId": "access-c3",
+    "directories": {
+      "output": "out"
+    },
+    "extraResources": [
+      {
+        "from": "./node_modules/node-adodb/lib/adodb.js",
+        "to": "adodb.js"
+      }
+    ],
+    "win": {
+        "target": ["nsis"],
+        "icon": "icon.ico",
+        "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "installerIcon": "icon.ico",
+      "uninstallerIcon": "icon.ico",
+      "uninstallDisplayName": "Access C3",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
