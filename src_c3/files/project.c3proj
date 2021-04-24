@@ -1,6 +1,6 @@
 {
 	"projectFormatVersion": 1,
-	"savedWithRelease": 24302,
+	"savedWithRelease": 24502,
 	"name": "New project",
 	"runtime": "c3",
 	"useWorker": "auto",
@@ -11,7 +11,7 @@
 			"id": "filechooser",
 			"name": "File chooser",
 			"author": "Scirra",
-			"version": "r243.2",
+			"version": "r245.2",
 			"bundled": false
 		},
 		{
@@ -19,7 +19,7 @@
 			"id": "Browser",
 			"name": "Browser",
 			"author": "Scirra",
-			"version": "r243.2",
+			"version": "r245.2",
 			"bundled": false
 		},
 		{
@@ -27,7 +27,7 @@
 			"id": "List",
 			"name": "List",
 			"author": "Scirra",
-			"version": "r243.2",
+			"version": "r245.2",
 			"bundled": false
 		},
 		{
@@ -35,7 +35,7 @@
 			"id": "Text",
 			"name": "Text",
 			"author": "Scirra",
-			"version": "r243.2",
+			"version": "r245.2",
 			"bundled": false
 		}
 	],
@@ -48,7 +48,8 @@
 			"ListTables_Filter_TABLE_TYPE",
 			"ListTables_Columns",
 			"txtLabel",
-			"txtData"
+			"txtData",
+			"MessageFromElectron"
 		],
 		"subfolders": []
 	},
@@ -193,6 +194,11 @@
 					"name": "renderer.js",
 					"type": "application/javascript",
 					"sid": 175610978616111
+				},
+				{
+					"name": "renedererMessageFromElectron.js",
+					"type": "application/javascript",
+					"sid": 580019635076193
 				}
 			],
 			"subfolders": []
@@ -209,7 +215,7 @@
 	},
 	"properties": {
 		"description": "",
-		"version": "1.0.0.0",
+		"version": "0.0.1",
 		"author": "Samuele (Strani Anelli) De Tomasi",
 		"authorEmail": "samuele@stranianelli.com",
 		"authorWebsite": "https://blog.stranianelli.com/",

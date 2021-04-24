@@ -13,6 +13,7 @@ runOnStartup(async runtime => {
 
 	try {
 		await runtime.assets.loadScripts("renderer.js");
+		await runtime.assets.loadScripts("renedererMessageFromElectron.js");
 	} catch (error) {
 		console.log(error);
 	}

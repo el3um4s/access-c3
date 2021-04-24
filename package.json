@@ -2,15 +2,15 @@
   "name": "access-c3",
   "productName": "Access C3",
   "repository": "github:el3um4s/access-c3",
-  "homepage": "https://github.com/el3um4s/access-c3#access-c3",
-  "version": "0.0.2",
+  "homepage": "https://github.com/el3um4s/access-c3",
+  "version": "0.0.1",
   "description": "Read MS Access files",
   "main": "dist/index.js",
   "scripts": {
     "start": "npm run compile && electron .",
     "compile": "tsc",
     "build-installer": "electron-builder build --win --publish never",
-    "publish":"electron-builder build --win --publish always",
+    "publish": "electron-builder build --win --publish always",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -29,6 +29,7 @@
     "typescript": "^4.2.4"
   },
   "dependencies": {
+    "electron-log": "^4.3.4",
     "electron-updater": "^4.3.8",
     "node-adodb": "^5.0.3"
   },
@@ -43,11 +44,13 @@
         "to": "adodb.js"
       }
     ],
-    "publish": [{
-      "provider": "github",
-      "owner": "el3um4s",
-      "repo": "access-c3"
-    }],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "el3um4s",
+        "repo": "access-c3"
+      }
+    ],
     "win": {
       "target": [
         "nsis"

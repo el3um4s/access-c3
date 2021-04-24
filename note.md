@@ -4,7 +4,8 @@ npm init
 npm i -D electron@latest
 npm install typescript --save-dev
 npm install electron-builder --save-dev
-npm i electron-updater 
+npm i electron-updater
+npm install electron-log
 npm i node-adodb
 
 
