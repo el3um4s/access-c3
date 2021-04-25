@@ -5,7 +5,6 @@ npm i -D electron@latest
 npm install typescript --save-dev
 npm install electron-builder --save-dev
 npm i electron-updater
-npm install electron-log
 npm i node-adodb
 
 
@@ -14,7 +13,7 @@ npm i node-adodb
 - dist: destination for compiled js
 - out: destination for installer
 - src: typescript files
-- src: original C3 files
+- src_c3: original C3 files
 
 ### Links
 
